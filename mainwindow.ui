@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFuction">
+    <property name="title">
+     <string>Fuction</string>
+    </property>
+    <addaction name="actionPalindrome"/>
+    <addaction name="actionWindChill"/>
+    <addaction name="actionCoffeeShop"/>
+    <addaction name="actionGravity"/>
+    <addaction name="actionCirclecal"/>
+    <addaction name="actionRecursiveExponent"/>
+    <addaction name="actionTaylor_2"/>
+    <addaction name="actionCoinToss"/>
+   </widget>
+   <addaction name="menuFuction"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionPalindrome">
+   <property name="text">
+    <string>Palindrome</string>
+   </property>
+  </action>
+  <action name="actionWindChill">
+   <property name="text">
+    <string>WindChill</string>
+   </property>
+  </action>
+  <action name="actionCoffeeShop">
+   <property name="text">
+    <string>CoffeeShop</string>
+   </property>
+  </action>
+  <action name="actionGravity">
+   <property name="text">
+    <string>Gravity</string>
+   </property>
+  </action>
+  <action name="actionCirclecal">
+   <property name="text">
+    <string>Circlecal</string>
+   </property>
+  </action>
+  <action name="actionRecursiveExponent">
+   <property name="text">
+    <string>RecursiveExponent</string>
+   </property>
+  </action>
+  <action name="actionTaylor">
+   <property name="text">
+    <string>Taylor</string>
+   </property>
+  </action>
+  <action name="actionTaylor_2">
+   <property name="text">
+    <string>Taylor</string>
+   </property>
+  </action>
+  <action name="actionCoinToss">
+   <property name="text">
+    <string>CoinToss</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
