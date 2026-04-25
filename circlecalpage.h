@@ -21,7 +21,7 @@ private slots:
 
 private:
     Ui::circlecalpage *ui;
-    Circlecal_Logic logic;
+    Circlecal_Logic *logic;  // ========== 修改：改为指针，用于动态内存分配 ==========
 };
 
 #endif // CIRCLECALPAGE_H

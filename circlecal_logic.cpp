@@ -32,7 +32,6 @@ double Circlecal_Logic::calculateArea(double radius)
 
 bool Circlecal_Logic::validateInputs(double x1, double y1, double x2, double y2)
 {
-    // 检查是否有无效值
     if (std::isnan(x1) || std::isnan(y1) || std::isnan(x2) || std::isnan(y2))
         return false;
     if (std::isinf(x1) || std::isinf(y1) || std::isinf(x2) || std::isinf(y2))
@@ -42,10 +41,13 @@ bool Circlecal_Logic::validateInputs(double x1, double y1, double x2, double y2)
 
 QString Circlecal_Logic::formatResult(double radius, double diameter, double circumference, double area)
 {
+    // ========== 新增：使用函数对象 PrecisionRounder 处理精度 ==========
+    PrecisionRounder rounder(2);  // 创建函数对象，保留2位小数
+
     QString result;
-    result.append(QString("Radius: %1\n").arg(radius, 0, 'f', 2));
-    result.append(QString("Diameter: %1\n").arg(diameter, 0, 'f', 2));
-    result.append(QString("Circumference: %1\n").arg(circumference, 0, 'f', 2));
-    result.append(QString("Area: %1").arg(area, 0, 'f', 2));
+    result.append(QString("Radius: %1\n").arg(rounder(radius), 0, 'f', 2));
+    result.append(QString("Diameter: %1\n").arg(rounder(diameter), 0, 'f', 2));
+    result.append(QString("Circumference: %1\n").arg(rounder(circumference), 0, 'f', 2));
+    result.append(QString("Area: %1").arg(rounder(area), 0, 'f', 2));
     return result;
 }
