@@ -24,7 +24,7 @@ private:
     void updateDisplay();
 
     Ui::coffeeshoppage *ui;
-    coffeeshop *shop;  // ========== 修改：改为指针，动态内存分配 ==========
+    coffeeshop *shop;
     int smallSold;
     int mediumSold;
     int largeSold;

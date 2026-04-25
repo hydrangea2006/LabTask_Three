@@ -16,14 +16,20 @@ PalindromePage::~PalindromePage()
 
 void PalindromePage::on_checkBtn_clicked()
 {
-    Palindrome_Logic logic;
-    if (logic.testPalindrome(ui->inputEdit->text())) {
+    Palindrome_Logic *logicPtr = new Palindrome_Logic(ui->inputEdit->text());
+
+    // 调用逻辑
+    if (logicPtr->testPalindrome()) {
         ui->resultLabel->setText("Result: True");
         ui->resultLabel->setStyleSheet("color: green;");
     } else {
         ui->resultLabel->setText("Result: False");
         ui->resultLabel->setStyleSheet("color: red;");
     }
+
+    reportStatus(*logicPtr);
+
+    delete logicPtr;
 }
 
 void PalindromePage::on_resetBtn_clicked()
