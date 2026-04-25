@@ -35,7 +35,7 @@
      <x>120</x>
      <y>100</y>
      <width>291</width>
-     <height>221</height>
+     <height>201</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -64,8 +64,8 @@
   <widget class="QPushButton" name="calculateButton">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>350</y>
+     <x>150</x>
+     <y>330</y>
      <width>201</width>
      <height>18</height>
     </rect>
