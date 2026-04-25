@@ -46,5 +46,32 @@ void taylorpage::on_btn_calculate_clicked()
     processText += logic.showPowerSteps(x, 2) + "\n";
     processText += logic.showFactorialSteps(2);
 
+    // ========== 新增演示内容（不影响原有功能）==========
+    processText += "\n\n───────────────────────────────────────\n";
+    processText += "🔧 新增功能演示:\n\n";
+
+    // 函数对象演示
+    FactorialFunctor factFunc;
+    processText += "1. 函数对象 (仿函数):\n";
+    processText += QString("   5! = %1 (使用FactorialFunctor)\n").arg(factFunc(5));
+
+    PowerFunctor powerFunc(3);
+    processText += QString("   3^4 = %1 (使用PowerFunctor)\n\n").arg(powerFunc(4));
+
+    // 友元函数演示
+    double errorRate = calculateErrorRate(logic, x, n);
+    processText += "2. 友元函数:\n";
+    processText += QString("   通过友元函数计算的误差率: %1%\n\n").arg(errorRate, 0, 'f', 6);
+
+    // 精度分析
+    PrecisionComparator comparator;
+    processText += "3. 精度分析:\n";
+    processText += comparator(result, exactValue);
+
+    // 历史记录
+    logic.addToHistory(x, n, result);
+    processText += "\n4. 动态内存分配 (历史记录):\n";
+    processText += logic.getHistory();
+
     ui->textEdit_process->setPlainText(processText);
 }
