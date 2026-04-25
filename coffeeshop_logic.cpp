@@ -1,9 +1,9 @@
 #include "coffeeshop_logic.h"
 
-// 定义静态常量
-const double coffeeshop::SMALL_PRICE = 1.75;
-const double coffeeshop::MEDIUM_PRICE = 1.90;
-const double coffeeshop::LARGE_PRICE = 2.00;
+// 定义静态成员（去掉const）
+double coffeeshop::SMALL_PRICE = 1.75;
+double coffeeshop::MEDIUM_PRICE = 1.90;
+double coffeeshop::LARGE_PRICE = 2.00;
 
 coffeeshop::coffeeshop()
 {
@@ -41,7 +41,10 @@ int coffeeshop::getTotalOunces(int smallSold, int mediumSold, int largeSold)
 // 计算总金额
 double coffeeshop::getTotalMoney(int smallSold, int mediumSold, int largeSold)
 {
-    return smallSold * SMALL_PRICE +
-           mediumSold * MEDIUM_PRICE +
-           largeSold * LARGE_PRICE;
+    // ========== 新增：使用函数对象 PriceMultiplier ==========
+    PriceMultiplier multiplier(1.0);  // 倍率1.0，保持原价
+
+    return smallSold * multiplier(SMALL_PRICE) +
+           mediumSold * multiplier(MEDIUM_PRICE) +
+           largeSold * multiplier(LARGE_PRICE);
 }

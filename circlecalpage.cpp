@@ -4,7 +4,8 @@
 
 circlecalpage::circlecalpage(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::circlecalpage)
+    ui(new Ui::circlecalpage),
+    logic(new Circlecal_Logic())  // ========== 新增：动态内存分配 ==========
 {
     ui->setupUi(this);
 }
@@ -12,6 +13,7 @@ circlecalpage::circlecalpage(QWidget *parent) :
 circlecalpage::~circlecalpage()
 {
     delete ui;
+    delete logic;  // ========== 新增：释放动态分配的内存 ==========
 }
 
 void circlecalpage::on_calculateBtn_clicked()
@@ -27,15 +29,16 @@ void circlecalpage::on_calculateBtn_clicked()
         return;
     }
 
-    if (!logic.validateInputs(x1, y1, x2, y2)) {
+    // ========== 修改：logic. 改为 logic-> ==========
+    if (!logic->validateInputs(x1, y1, x2, y2)) {
         QMessageBox::warning(this, "Input Error", "Invalid input values!");
         return;
     }
 
-    double radius = logic.calculateRadius(x1, y1, x2, y2);
-    double diameter = logic.calculateDiameter(radius);
-    double circumference = logic.calculateCircumference(radius);
-    double area = logic.calculateArea(radius);
+    double radius = logic->calculateRadius(x1, y1, x2, y2);
+    double diameter = logic->calculateDiameter(radius);
+    double circumference = logic->calculateCircumference(radius);
+    double area = logic->calculateArea(radius);
 
     ui->radiusLabel->setText(QString("Radius: %1").arg(radius, 0, 'f', 2));
     ui->diameterLabel->setText(QString("Diameter: %1").arg(diameter, 0, 'f', 2));
